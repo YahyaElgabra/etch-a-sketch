@@ -1,3 +1,4 @@
+// important elements
 const container = document.querySelector("#container");
 const rowLabel = document.querySelector("#rowLabel");
 const colLabel = document.querySelector("#colLabel");
@@ -11,6 +12,7 @@ const colorWheel = document.createElement("input");
 colorWheel.type = "color";
 colorWheel.id = "color";
 
+// event listeners
 rowSlider.onmousemove = () => updateRow();
 colSlider.onmousemove = () => updateCol();
 rowSlider.onchange = () => makeGrid();
@@ -21,7 +23,7 @@ brushSlider.onmousemove = () => {
     } else if (brushSlider.value == 2) {
         brushLabel.textContent = "eraser";
     } else if (brushSlider.value == 3) {
-        brushLabel.textContent = "rainbow brush";
+        brushLabel.textContent = "rainbow";
     } else {
         brushLabel.textContent = "choose your color";
     }
@@ -40,8 +42,9 @@ clear.addEventListener("click", () => {
 })
 
 
-makeGrid();
+makeGrid(); // makes grid at the start 
 
+// functions
 function makeGrid() {   
     while (container.firstChild) {
         container.removeChild(container.firstChild);
@@ -68,6 +71,7 @@ function updateCol() {
     colLabel.textContent = `${colSlider.value} columns`;
   }
 
+// helper function for makeGrid
 function color(cell) {
     cell.addEventListener("mouseover", e => {
         if (e.buttons == 1){
@@ -80,7 +84,7 @@ function color(cell) {
                 let g = Math.floor(Math.random() * 256)
                 let b = Math.floor(Math.random() * 256)
                 cell.style.backgroundColor = `rgb(${r}, ${g}, ${b})`;
-            } else {
+            } else if (brushSlider.value == 4) {
                 cell.style.backgroundColor = colorWheel.value;
             }
         } 
