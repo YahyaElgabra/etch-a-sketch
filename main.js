@@ -6,6 +6,10 @@ const colSlider = document.querySelector("#colSlider");
 const clear = document.querySelector("#clear");
 const brushSlider = document.querySelector("#brushType");
 const brushLabel = document.querySelector("#brushLabel");
+const brush = document.querySelector("#brush");
+const colorWheel = document.createElement("input");
+colorWheel.type = "color";
+colorWheel.id = "color";
 
 rowSlider.onmousemove = () => updateRow();
 colSlider.onmousemove = () => updateCol();
@@ -15,16 +19,26 @@ brushSlider.onmousemove = () => {
     if (brushSlider.value == 1) {
         brushLabel.textContent = "black brush";
     } else if (brushSlider.value == 2) {
-        brushLabel.textContent = "white brush";
+        brushLabel.textContent = "eraser";
     } else if (brushSlider.value == 3) {
         brushLabel.textContent = "rainbow brush";
     } else {
         brushLabel.textContent = "choose your color";
     }
 }
+brushSlider.onchange = () => {
+    if (brushSlider.value == 4) {
+        brush.appendChild(colorWheel);
+    } else {
+        while(brush.children.length > 3) {
+            brush.removeChild(brush.lastChild);
+        }
+    }
+}
 clear.addEventListener("click", () => {
     makeGrid();
 })
+
 
 makeGrid();
 
@@ -67,7 +81,7 @@ function color(cell) {
                 let b = Math.floor(Math.random() * 256)
                 cell.style.backgroundColor = `rgb(${r}, ${g}, ${b})`;
             } else {
-                
+                cell.style.backgroundColor = colorWheel.value;
             }
         } 
     })
