@@ -10,6 +10,7 @@ body {
     height: 450px;
     margin: auto;
     background-color: white;
+    margin-bottom: 16px;
 }
 
 .row {
@@ -20,3 +21,17 @@ body {
     border: 1px solid black;
     flex: 1;
   }
+
+#sizing {
+    display: flex;
+    justify-content: center;
+    margin: 20px;
+}
+
+#row {
+    margin-right: 32px;
+}
+
+#col {
+    margin-left: 32px;
+}
