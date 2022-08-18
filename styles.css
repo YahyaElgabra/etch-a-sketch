@@ -1,0 +1,22 @@
+body {
+    text-align: center;    
+    background-color: aliceblue;
+}
+
+#container {
+    display: grid;
+    border: solid black;
+    width: 800px;
+    height: 450px;
+    margin: auto;
+    background-color: white;
+}
+
+.row {
+    display: flex;
+}
+
+.cell {
+    border: 1px solid black;
+    flex: 1;
+  }
