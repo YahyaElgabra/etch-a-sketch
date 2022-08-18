@@ -9,6 +9,8 @@ colSlider.onmousemove = () => updateCol();
 rowSlider.onchange = () => makeGrid();
 colSlider.onchange = () => makeGrid();
 
+
+
 function makeGrid() {  
     let rows = rowSlider.value;
     let columns = colSlider.value;  
@@ -17,13 +19,18 @@ function makeGrid() {
     }
 
     for (let i = 0; i < rows; i++) {
-        let white = document.createElement("div");
-        white.classList.add("row");
-        container.appendChild(white);
+        let row = document.createElement("div");
+        row.classList.add("row");
+        container.appendChild(row);
         for (j = 0; j < columns; j++) {
-            let black = document.createElement("div");
-            black.classList.add("cell");
-            white.appendChild(black);
+            let cell = document.createElement("div");
+            cell.classList.add("cell");
+            cell.addEventListener("mouseover", e => {
+                if (e.buttons == 1){
+                    cell.classList.add("black");
+                } 
+            })
+            row.appendChild(cell);
         };
     }
 }
